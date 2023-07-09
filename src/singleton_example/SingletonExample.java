@@ -9,7 +9,7 @@ public class SingletonExample {
     /*
         Singleton, Ensures that only one object of a particular class is ever created.
         Jika kita sudah pernah menginstansiasi sebuah objek maka kita akan menginstansiasi dari objek yang sebelumnya sudah kita buat
-        Alih alih membuat objek baru
+        Alih alih menginstansi objek baru kita bisa memangil objek yang pernah kita instansiasi
         Jadi hanya perlu satu objek yang di instansiasi ketika membuat sebuah objek baru
      */
     public static void main(String[] args) {
@@ -30,6 +30,7 @@ class Admin {
 
     public void sendMessageToConsument() {
         MessageHelper messageHelper = MessageHelper.getInstance();
+        System.out.println(messageHelper.hashCode());
         messageHelper.setData("message", "hi consument!");
     }
 }
@@ -38,6 +39,7 @@ class Consument {
 
     public void receivedMessageFromAdmin() {
         MessageHelper messageHelper = MessageHelper.getInstance();
+        System.out.println(messageHelper.hashCode());
         String message = messageHelper.containsData("message") ? messageHelper.getData("message").toString() : "data not found";
         System.out.println("Admin: " + message);
     }
